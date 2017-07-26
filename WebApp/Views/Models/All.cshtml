@@ -1,0 +1,45 @@
+﻿@model List<WebApp.Models.Model>
+@{
+    ViewBag.Title = "All Models";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="heading-breadcrumbs" style="margin-bottom: 40px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>All Models</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>All Models</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="container">
+        <div class="row products">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 col-sm-4">
+                    <div class="product">
+                        <div class="image">
+                            <a href="~/Models/Details/@item.ModelID">
+                                <img src="~/Files/model-@item.ModelID/@item.Name-.jpg" alt="" class="img-responsive image1">
+                            </a>
+                        </div>
+                        
+                        <div class="text">
+                            <h3>@Html.ActionLink(item.Name, "Details", "Models", new{ id = item.ModelID }, null)</h3>
+                            <p class="price">$@Html.DisplayFor(modelItem => item.Price)</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

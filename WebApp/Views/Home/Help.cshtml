@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Help";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 clearfix">
+                <section>
+                    <div id="text-page">
+                        <p class="lead">Для правильного відображення завантажених моделей на сайті ознайомтеся з правилами користування.</p>
+                        <h2>Основні відомості</h2>
+                        <p class="lead">
+                            Наша платформа використовує універсальний плагін для відображення 3D моделей на сторінках сайту.
+                            Для відображення моделі плагін використовує файли формату JSON. В них зберігаються основні відомості про модель.
+                            Для того щоб завантажена вами модель відображалась на сайті необхідно разом із файлом моделі завантажити її JSON-файл.
+                        </p>
+                        <h2>Налаштування Blender для експорту файлів JSON</h2>
+                        <p class="lead">
+                            Для експортування моделі вам необхідно підключити розширення до вашого 3D редактора. 
+                            Скачати розширення можна тут: <a href="https://github.com/mrdoob/three.js/tree/master/utils/exporters/blender">Blender to Three.js exporter</a>. 
+                            Далі необхідно додати файл <code>io_three</code> до папки розширеннь вашого Blender.
+                            Папка розширень знаходиться  за шляхом: <code>~/.config/blender/2.69/scripts/addons/</code>,
+                            або еквівалентним шляхом в залежності від операційної системи. 
+                        </p>
+                        <p class="lead">
+                            Після цього відкрийте <code>File > User preferences</code> і перейдіть на вкладку<code>Addons</code>.
+                            Введіть у пошуку <code>Three.js</code> і застосуйте знайдене розширення.
+                        </p>
+                        <p class="text-center">
+                            <img src="~/Content/img/setings.jpg" class="img-rounded img-responsive" alt="">
+                        </p>
+                        <p class="lead">
+                            <br />
+                            Коли розширення застосовано у вікні <code>File > Export</code> з'явиться нова строка - <code>Three.js(.json)</code>
+                        </p>
+                        <p class="text-center">
+                                <img src="~/Content/img/exp1.jpg" class="img-rounded img-responsive" alt=""><br />
+                        </p>
+                        <h2>Експорт моделі у формат JSON</h2>
+                        <p class="lead">
+                            Щоб конвертувати модель у формат JSON потрібно перейти на панель <code>Export</code> і обрати <code>Three.js</code> експортер.
+                            Далі на панелі відмітити усі необхідні властивості, які будуть передані JSON файлу.
+                        </p>    
+                        <img src="~/Content/img/exp2.jpg" />
+                        <p class="lead">
+                            <br />
+                            Також упевніться, що параметри сцени не задіяні. Адже нам необхідно експортувати лише параметри моделі.
+                        </p>
+                        <img src="~/Content/img/exp3.jpg" />
+                        <br />
+                        <h2>Завантаження моделей на платформу</h2>
+                        <p class="lead">
+                            Для завантаження ваших моделей на платформу, перш за все, вам потрібно створити акаунт.
+                            Після його створення перейдть на вашу @Html.ActionLink("сторінку користувача", "Index", "Manage"). 
+                            На сторінці оберіть пункт @Html.ActionLink("Завантаження моделі", "UploadModel", "Manage").
+                        </p>
+                        <img src="~/Content/img/upload1.jpg" />
+                        <p class="lead">
+                            <br />
+                            В полях запишіть основні відомості про вашу модель, а також оберіть її категорію.
+                            Далі потрібно обрати файли для завантаження.
+                            <h3>Зверніть увагу: назви файлів та ім'я моделі повинні бути однаковими</h3>  
+                        </p>
+                        <img src="~/Content/img/upload2.jpg" />
+                        <p class="lead">
+                            <br />
+                            Після завантаження модель буде доступна на @Html.ActionLink("сторінці ваших моделей", "MyModels", "Manage").
+                        </p>                  
+                    </div>
+                </section>
+            </div>
+            <div class="col-sm-3">
+                <!-- *** PAGES MENU ***
+                _________________________________________________________ -->
+                <div class="panel panel-default sidebar-menu">
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+

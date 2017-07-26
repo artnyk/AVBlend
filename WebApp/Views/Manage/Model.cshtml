@@ -1,0 +1,98 @@
+﻿@model WebApp.Models.Model
+@{
+    ViewBag.Title = "Model";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="heading-breadcrumbs" style="margin-bottom: 40px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>@Model.Name</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb">
+                    <li>
+                        @Html.ActionLink("Manage", "Index", "Manage")
+                    </li>
+                    <li>@Html.ActionLink("Model", "MyModels", "Manage")</li>
+                    <li>@Model.Name</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <iframe alt class="img-responsive" style="width: 700px; height: 500px" src="~/Viewer/Model/@Model.ModelID" allowtransparency="true"></iframe>
+                <br />
+            </div>
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Category.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Category.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.User.Login)
+                    </dt>
+
+                    <dd>
+                        @Html.ActionLink(Model.User.Login, "Seller", "Users", new { id = Model.User.Login }, null)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DateCreation)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DateCreation)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SoldNum)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SoldNum)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Price)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Enabled)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Enabled)
+                    </dd>
+                    <dd>
+                        @Html.ActionLink("Edit", "Edit", "Models", new { id = Model.ModelID }, new { @class = "btn btn-template-main" })
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+

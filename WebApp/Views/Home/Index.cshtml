@@ -1,0 +1,76 @@
+﻿@model List<WebApp.Models.Category>
+    @{
+        ViewBag.Title = "Home Page";
+    }
+    <div class="jumbotron">
+        <div class="dark-mask"></div> 
+        <div class="container">
+            <div class="row mb-small">
+                <div class="col-sm-12 text-center">
+                    <h1>@Resources.Resource.HomeIndexHeader1</h1>
+                    <h2>Here you can find cool blender models and sell your works.</h2>
+                </div>
+            </div>
+            <div class="row">
+                
+                <div class="col-md-6 text-center">
+                    <div class="model-viewer">
+                        <iframe alt class="img-responsive" style="width: 600px; height: 400px" src="~/Viewer/Model/1031" allowtransparency="true"></iframe>
+                    </div> </div>
+                <div class="col-sm-6 text-center-xs">
+                    <p class="text-uppercase">
+                        Our 3D technology works in all browsers 
+                        <br />and all operating systems 
+                        <br />(Windows, Mac, Linux, iOS and Android). 
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />    
+    <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="heading text-center">
+                <h2>Categories</h2>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br />   
+
+    <!--CATEGORIES-->
+    <div class="row portfolio no-space">
+    @foreach (var item in Model)
+    {
+    <div class="col-sm-4">
+        <div class="box-image">
+            <div class="image">
+                <img src="~/content/img/category-@item.CategoryID .jpg" alt="" class="img-responsive">
+            </div>
+            <div class="bg"></div>
+            <div class="text">
+                <p class="buttons">
+                    @Html.ActionLink(item.Name, "Models", "Categories", new { id = item.Name }, new { @class = "btn btn-template-transparent-primary" })  <!--to category name not id-->
+                <br />
+                </p>
+            </div>
+        </div>
+    </div>
+    }
+
+</div>
+<br />
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="heading text-center">
+                <h2>@Resources.Resource.Models</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+@Html.Partial("_HomeModels")
+ 

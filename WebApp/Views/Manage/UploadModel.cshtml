@@ -1,0 +1,108 @@
+﻿@model WebApp.ViewModels.UploadViewModel
+@{
+    ViewBag.Title = "Upload Model";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="heading-breadcrumbs" style="margin-bottom: 40px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Upload Model</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home")
+                    </li>
+                    <li>@Html.ActionLink("Manage", "Index", "Manage")</li>
+                    <li>Upload Model</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="container">
+        <div class="col-md-9">
+            @using (Html.BeginForm(Html.BeginForm("UploadModel", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" })))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Model</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                       <div class = "control-label col-md-2">Category</div>
+                        <div class="col-md-6">
+                            @Html.DropDownList("CategoryID", Model.Catigories as SelectList, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-6">
+                            <h3>Choose files to upload</h3>
+                            <input type="file" name="uploads" class="btn btn-default" /><br>
+                            <input type="file" name="uploads" class="btn btn-default" /><br>
+                            <input type="submit" class="btn btn-default" value="Upload" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Customer section</h3>
+                </div>
+
+                <div class="panel-body">
+
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>
+                            <a href="~/Manage/Index"><i class="fa fa-user"></i> My account</a>
+                        </li>
+                        <li>
+                            <a href="~/Manage/MyModels"><i class="fa fa-heart"></i> My Models</a>
+                        </li>
+                        <li>
+                            <a href="~/Manage/MyOrders"><i class="fa fa-list"></i> My orders</a>
+                        </li>
+                        <li class="active">
+                            <a href="~/Manage/UploadModel"><i class="fa fa-desktop"></i>Upload Model</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+

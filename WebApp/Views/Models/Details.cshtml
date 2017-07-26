@@ -1,0 +1,94 @@
+﻿@model WebApp.ViewModels.ModelDetailsViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="heading-breadcrumbs" style="margin-bottom: 40px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>@Model.Name</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home")
+                    </li>
+                    <li>@Html.ActionLink("Models", "All", "Models")</li>
+                    <li>@Model.Name</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                    <iframe alt class="img-responsive" style="width: 700px; height: 500px" src="~/Viewer/Model/@Model.ModelID" allowtransparency="true"></iframe>
+                    <br />
+            </div>    
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        Model Name
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt>
+                        Category
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CategoryName)
+                    </dd>
+
+                    <dt>
+                        Seller
+                    </dt>
+
+                    <dd>
+                        @Html.ActionLink(Model.SellerName, "Seller", "Users", new { id = Model.SellerName }, null)
+                    </dd>
+
+                    <dt>
+                        Creation Date
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DateCreation)
+                    </dd>
+
+                    <dt>
+                        Sold times
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.SoldNum)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Price)
+                    </dd>
+                    <dt>
+                        @Html.ActionLink("Back to List", "All", "Models", null, new { @class= "btn btn-template-main" })
+                    </dt>
+                    <dd>
+                    @using (Html.BeginForm("GetFile", "Models", new { id = Model.ModelID }))
+                    {
+                        <button type="submit" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Buy Model</button>
+                    }
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

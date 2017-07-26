@@ -1,0 +1,35 @@
+﻿@using WebApp.Models
+@using WebApp.Repository
+@{
+    var models = new List<Model>();
+    using (ModelsRepository db = new ModelsRepository())
+    {
+        models = db.GetItemsList();
+    }
+}
+<div id="content">
+    <div class="container">
+        <div class="row products">
+            @if (models.Count > 9)
+            {
+                for (int i = models.Count() - 1; i > models.Count() - 9; i--)
+                {
+                <div class="col-md-3 col-sm-4">
+                    <div class="product">
+                        <div class="image">
+                            <a href="~/Models/Details/@models[i].ModelID">
+                                <img src="~/Files/model-@models[i].ModelID/@models[i].Name-.jpg" alt="" class="img-responsive image1">
+                            </a>
+                        </div>
+                        <div class="text">
+                            <h3><a href="~/Models/Details/@models[i].ModelID">@Html.DisplayFor(modelItem => models[i].Name)</a></h3>
+                            <p class="price">$@Html.DisplayFor(modelItem => models[i].Price)</p>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+}
